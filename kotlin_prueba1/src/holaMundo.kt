@@ -1,3 +1,5 @@
+import java.io.File
+import java.io.InputStream
 
 fun main (args: Array<String>)
 {
@@ -13,6 +15,13 @@ fun main (args: Array<String>)
     var paginas:MutableList<String> = arrayListOf("","un pollito vivia feliz", "un dia se murio","petalos negros","tormenta de verano")
     var libro = Libro ("el pollito que murio", 1,5,autores,paginas)
     libro.mostrarPagina(5)
+    //var lines:List<String> =archivoToArrayString("D:\\repo-git-local-2\\Kotlin-y-android\\kotlin_prueba1\\src\\pruebas.txt")
+    //lines.forEach{line -> println()}
+    var lector = Lector()
+    var lines:List<String> =lector.archivoToArrayString("D:\\repo-git-local-2\\Kotlin-y-android\\kotlin_prueba1\\src\\pruebas.txt")
+    lines.forEach{line -> println()}
+
+    println(lines.size)
 
     var t :String ="hola"
     println("double: "+(dou))
@@ -22,8 +31,18 @@ fun main (args: Array<String>)
     println("años:"+multiplicar(2,5))
     mostrarDias()
 
-
 }
+
+fun archivoToArrayString(file : String):List<String>
+{
+    val inputStream : InputStream = File(file).inputStream()
+    val lineList = mutableListOf<String>()
+
+    inputStream.bufferedReader().forEachLine { lineList.add(it) }
+    lineList.forEach{ println(" "+it)}
+    return lineList
+}
+
 
 fun suma(numero1:Int , numero2:Int) :Int
 {
