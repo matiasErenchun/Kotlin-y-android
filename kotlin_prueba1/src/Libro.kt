@@ -1,14 +1,23 @@
-class Libro constructor(var titulo:String
-             , var edicion: Int
-             , var numeroDePaginas : Int
-             , var autores: MutableList<String>
-             , var paginas: MutableList<String>)
+
+
+class Libro constructor( titulo:String
+                         ,edicion: Int
+                         ,numeroDePaginas : Int
+                         ,autores: MutableList<String>
+                         ,paginas: MutableList<String>)
 {
+    var titulo:String =" "
+    var edicion: Int =0
+    var numeroDePaginas : Int =0
+    var autores: MutableList<String> = mutableListOf(" ")
+    var paginas: MutableList<String> = mutableListOf(" ")
     var paginaActual: Int=0
 
-    init {
+    init
+    {
         println("se creo el libro: $titulo")
     }
+
     fun pasarPagina(): Unit
     {
         if(this.numeroDePaginas>this.paginaActual)
@@ -42,3 +51,4 @@ class Libro constructor(var titulo:String
 
 
 }
+

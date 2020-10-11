@@ -10,8 +10,6 @@ class Lector
         val lineList = mutableListOf<String>()
 
         inputStream.bufferedReader().forEachLine { lineList.add(it) }
-        lineList.forEach{ println(" "+it)}
         return lineList
     }
-    
 }

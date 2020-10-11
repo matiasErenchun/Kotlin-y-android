@@ -3,44 +3,29 @@ import java.io.InputStream
 
 fun main (args: Array<String>)
 {
-    println("hola mundo :D\n"+1)
 
-    var a =1.3f
-    var b =8
-    var c= b.toDouble()
 
-    var dou :Double = 1.222222222
-    var floa: Float =1.55f
+    showInfo("firulais","perro",10)
+    println("resultado multiplicar:"+multiplicar(2,5))
+    mostrarDias()
+    println(" ")
+    experimentosDatos()
+
+    //objetos
+
     var autores :MutableList<String> = arrayListOf("hola","pepe","jose")
     var paginas:MutableList<String> = arrayListOf("","un pollito vivia feliz", "un dia se murio","petalos negros","tormenta de verano")
     var libro = Libro ("el pollito que murio", 1,5,autores,paginas)
     libro.mostrarPagina(5)
-    //var lines:List<String> =archivoToArrayString("D:\\repo-git-local-2\\Kotlin-y-android\\kotlin_prueba1\\src\\pruebas.txt")
-    //lines.forEach{line -> println()}
+
+
+
     var lector = Lector()
     var lines:List<String> =lector.archivoToArrayString("D:\\repo-git-local-2\\Kotlin-y-android\\kotlin_prueba1\\src\\pruebas.txt")
-    lines.forEach{line -> println()}
+    lines.forEach{ println(" "+it)}
 
     println(lines.size)
 
-    var t :String ="hola"
-    println("double: "+(dou))
-    println("float: "+(floa))
-    println("a+b: "+(a+b))
-    showInfo("firulais","perro",10)
-    println("años:"+multiplicar(2,5))
-    mostrarDias()
-
-}
-
-fun archivoToArrayString(file : String):List<String>
-{
-    val inputStream : InputStream = File(file).inputStream()
-    val lineList = mutableListOf<String>()
-
-    inputStream.bufferedReader().forEachLine { lineList.add(it) }
-    lineList.forEach{ println(" "+it)}
-    return lineList
 }
 
 
@@ -49,18 +34,15 @@ fun suma(numero1:Int , numero2:Int) :Int
     return numero1+numero2
 }
 
-fun sumaf(numero1: Int,numero2: Int):Float
-{
-    return (numero1+numero2).toFloat()
-}
-
 fun showInfo(name : String , especie:String, edad : Int): Unit
 {
-    println(" el nombre del animal es $name, correspondiente a la especie $especie y tiene una edad de $edad")
+    println(" el nombre del animal es $name, correspondiente a la especie $especie y tiene una edad de $edad años")
 }
 
 fun multiplicar(factor1:Int,factor2:Int): Int = factor1*factor2
 
+
+//when
 fun printMonth(mes:Int):Unit
 {
     when(mes)
@@ -73,6 +55,18 @@ fun printMonth(mes:Int):Unit
     }
 }
 
+//when in
+fun printOtherMonth(mes:Int)
+{
+    when(mes)
+    {
+        in 1..6 -> println("primer semestre")
+        in 6..12 -> println("segundo semestre")
+        else -> println("noe  sun mes valido")
+    }
+}
+
+//when is
 fun printAlgo(algo:Any)
 {
     when(algo)
@@ -82,13 +76,12 @@ fun printAlgo(algo:Any)
         is String-> println("un pinche String")
         else -> println("no se que pinche madre es esto ")
     }
-
 }
 
-
+//for
 fun mostrarDias():Unit
 {
-    var dias : MutableList<String> = mutableListOf("lunes","martes","miercoles","jueves","viernes","sabado","domingo")
+    var dias : MutableList<String> = mutableListOf("lunes","martes","miercoles")
 
     for ( (numero,dia) in dias.withIndex())
     {
